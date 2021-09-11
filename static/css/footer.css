@@ -1,0 +1,11 @@
+.downfooter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: rgb(7, 7, 7);
+  text-align: center !important;
+  text: white;
+}
+
