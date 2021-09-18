@@ -7,9 +7,23 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<div class="navbar-nav">
-			<a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+			<a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
 			<a href="#" class="nav-item nav-link">Quiz</a>
 		</div>
+        <div class="navbar-nav ml-auto">
+             {% if request.user.is_authenticated %}
+                <div >
+                 <a href="{% url 'accounts:logout' %}" class="btn btn-danger " style="margin-right: 40px;" >Logout</a>
+            </div>
+
+            {% else %}
+           	<div >
+                 <a href="{% url 'accounts:login' %}" class="btn btn-secondary " style="margin-right: 40px;" >login</a>
+            </div>
+
+
+            {% endif %}
+        </div>
         </div>
 </nav>
 
