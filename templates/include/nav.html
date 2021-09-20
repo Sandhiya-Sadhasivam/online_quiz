@@ -8,7 +8,7 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<div class="navbar-nav">
 			<a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-			<a href="#" class="nav-item nav-link">Quiz</a>
+			<a href="{% url 'quiz:quiz-list'  %}" class="nav-item nav-link">Quiz</a>
 		</div>
         <div class="navbar-nav ml-auto">
              {% if request.user.is_authenticated %}

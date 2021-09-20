@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+     {% block custom_css %}
+
+
+
+     {% endblock custom_css %}
+
+    <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+
+    <table class="table table-bordered table-hover table-dark" id="dev-table">
+      <thead class="text-center">
+       <th  colspan="2" class="h1" >Quiz List</th>
+        <tr class="h3">
+
+
+          <th scope="col>" >Quiz Level</th>
+
+          <th scope="col">Take Quiz</th>
+        </tr>
+      </thead>
+      {% for t in courses %}
+      <tr class="text-center h4">
+
+        <td > {{t.course_name}}</td>
+
+        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:take-quiz' t.id  %}"><span class="fa fa-arrow-circle-right " aria-hidden="true"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}
