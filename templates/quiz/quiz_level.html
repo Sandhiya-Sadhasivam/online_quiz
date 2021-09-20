@@ -27,20 +27,20 @@
     <table class="table table-bordered table-hover table-dark" id="dev-table">
       <thead class="text-center">
        <th  colspan="2" class="h1" >Quiz List</th>
-        <tr class="h3">
+        <tr>
 
 
-          <th scope="col>" >Quiz Level</th>
+          <th scope="col>" class="">Quiz Level</th>
 
           <th scope="col">Take Quiz</th>
         </tr>
       </thead>
       {% for t in courses %}
-      <tr class="text-center h4">
+      <tr class="text-center">
 
         <td > {{t.course_name}}</td>
 
-        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:take-quiz' t.id  %}"><span class="fa fa-arrow-circle-right " aria-hidden="true"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:take-quiz' t.id  %}">Start</a></td>
       </tr>
       {% endfor %}
     </table>
