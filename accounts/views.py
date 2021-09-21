@@ -1,9 +1,8 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from .forms import UserRegistrationForm
+from . import forms
+from django.contrib.auth.models import Group
 from django.contrib import messages
-from django.http import HttpResponse
 
 
 def login_user(request):
@@ -23,46 +22,30 @@ def login_user(request):
     return render(request, 'accounts/login.html')
 
 
+def student_signup_view(request):
+    userForm = forms.StudentUserForm()
+    studentForm = forms.StudentForm()
+    mydict = {'userForm': userForm, 'studentForm': studentForm}
+    if request.method == 'POST':
+        userForm = forms.StudentUserForm(request.POST)
+        studentForm = forms.StudentForm(request.POST, request.FILES)
+        if userForm.is_valid() and studentForm.is_valid():
+            user = userForm.save()
+            user.set_password(user.password)
+            user.save()
+            student = studentForm.save(commit=False)
+            student.user = user
+            student.save()
+            my_student_group = Group.objects.get_or_create(name='STUDENT')
+            my_student_group[0].user_set.add(user)
+        return redirect('accounts:login')
+    return render(request, 'accounts/register.html', context=mydict)
+
+
 def logout_user(request):
     logout(request)
     return redirect('home')
 
 
-def create_user(request):
-    if request.method == 'POST':
-        check1 = False
-        check2 = False
-        check3 = False
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password1 = form.cleaned_data['password1']
-            password2 = form.cleaned_data['password2']
-            email = form.cleaned_data['email']
-
-            if password1 != password2:
-                check1 = True
-                messages.error(request, 'Password doesn\'t matched',
-                               extra_tags='alert alert-warning alert-dismissible fade show')
-            if User.objects.filter(username=username).exists():
-                check2 = True
-                messages.error(request, 'Username already exists',
-                               extra_tags='alert alert-warning alert-dismissible fade show')
-            if User.objects.filter(email=email).exists():
-                check3 = True
-                messages.error(request, 'Email already registered',
-                               extra_tags='alert alert-warning alert-dismissible fade show')
-
-            if check1 or check2 or check3:
-                messages.error(
-                    request, "Registration Failed", extra_tags='alert alert-warning alert-dismissible fade show')
-                return redirect('accounts:register')
-            else:
-                user = User.objects.create_user(
-                    username=username, password=password1, email=email)
-                messages.success(
-                    request, f'Thanks for registering {user.username}!', extra_tags='alert alert-success alert-dismissible fade show')
-                return redirect('accounts:login')
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+def is_student(user):
+    return user.groups.filter(name='STUDENT').exists()

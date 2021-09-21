@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from accounts import models
 from quiz import models as QMODEL
 
 
@@ -49,11 +50,31 @@ def calculate_marks_view(request):
             actual_answer = questions[i].answer
             if selected_ans == actual_answer:
                 total_marks = total_marks + questions[i].marks
-        student = models.User.objects.get(user_id=request.user.id)
+        student = models.Student.objects.get(user_id=request.user.id)
         result = QMODEL.Result()
         result.marks = total_marks
         result.exam = course
         result.student = student
         result.save()
 
-        return HttpResponseRedirect('view-result')
+        return redirect('quiz:view-result')
+
+
+@login_required()
+def view_result_view(request):
+    courses = QMODEL.Course.objects.all()
+    return render(request, 'quiz/result.html', {'courses': courses})
+
+
+@login_required()
+def check_marks_view(request, pk):
+    course = QMODEL.Course.objects.get(id=pk)
+    student = models.Student.objects.get(user_id=request.user.id)
+    results = QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
+    return render(request, 'quiz/mark.html', {'results': results})
+
+
+@login_required()
+def student_marks_view(request):
+    courses = QMODEL.Course.objects.all()
+    return render(request, 'quiz/student-mark.html', {'courses': courses})

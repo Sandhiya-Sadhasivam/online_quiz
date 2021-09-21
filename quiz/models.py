@@ -3,6 +3,9 @@ from django.db import models
 
 
 # Create your models here.
+from accounts.models import Student
+
+
 class Course(models.Model):
     course_name = models.CharField(max_length=50)
     question_number = models.PositiveIntegerField()
@@ -28,9 +31,10 @@ class Question(models.Model):
 
 
 class Result(models.Model):
-    student = models.ForeignKey(User, on_delete=models.CASCADE)
-    Level = models.ForeignKey(Course, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    level = models.ForeignKey(Course, on_delete=models.CASCADE)
     marks = models.PositiveIntegerField()
 
-    def __str__(self):
+
+def __str__(self):
         return f"{self.Level} - {self.student} - {self.marks}"
