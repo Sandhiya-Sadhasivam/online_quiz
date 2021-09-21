@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block custom_css %}
-<link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock custom_css %}
 
 
@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col">
             <div id="home-content">
-                <h1>Vote - Get Started!</h1>
-                <h3>Your Voice Matters!</h3>
+                <h1>Quiz - Get Started!</h1>
+                <h3>Your Choice Matters!</h3>
                 <hr>
                 <a class="btn btn-light btn-lg" href="{% url 'quiz:quiz-list'  %}" role="button">Get Started !</a>
             </div>

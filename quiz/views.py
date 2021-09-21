@@ -53,7 +53,7 @@ def calculate_marks_view(request):
         student = models.Student.objects.get(user_id=request.user.id)
         result = QMODEL.Result()
         result.marks = total_marks
-        result.exam = course
+        result.level = course
         result.student = student
         result.save()
 
@@ -70,7 +70,7 @@ def view_result_view(request):
 def check_marks_view(request, pk):
     course = QMODEL.Course.objects.get(id=pk)
     student = models.Student.objects.get(user_id=request.user.id)
-    results = QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
+    results = QMODEL.Result.objects.all().filter(level=course).filter(student=student)
     return render(request, 'quiz/mark.html', {'results': results})
 
 

@@ -16,10 +16,7 @@
       text-align: center;
     }
 
-    .row {
-      margin: 100px;
-    }
-  </style>
+    </style>
 <br><br>
 <div class="container">
   <div class="panel panel-primary">
@@ -30,7 +27,7 @@
         <tr>
 
 
-          <th scope="col>" class="">Quiz Level</th>
+          <th scope="col" >Quiz Level</th>
 
           <th scope="col">Take Quiz</th>
         </tr>
@@ -40,7 +37,7 @@
 
         <td > {{t.course_name}}</td>
 
-        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:take-quiz' t.id  %}">Start</a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:take-quiz' t.id  %}">  <i class="fa fa-arrow-circle-right" aria-hidden="true">  Start   </i></a></td>
       </tr>
       {% endfor %}
     </table>
