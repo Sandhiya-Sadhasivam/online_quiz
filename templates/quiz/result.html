@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+</style>
+    <br><br>
+<div class="container">
+  <div class="panel panel-primary">
+
+    <table class="table table-bordered table-hover table-dark" id="dev-table">
+      <thead class="text-center">
+       <th  colspan="2" class="h1" >View Score</th>
+        <tr>
+
+          <th scope="col">Quiz Level</th>
+
+          <th scope="col">View Score</th>
+        </tr>
+      </thead>
+      {% for t in courses %}
+      <tr class="text-center">
+
+        <td> {{t.course_name}}</td>
+
+        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:check-marks' t.id  %}"><i class="fa fa-arrow-circle-right" aria-hidden="true">  view   </i><span class="glyphicon glyphicon-eye-open"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock %}
