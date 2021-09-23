@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-    <div class="row center">
-        <p>Already have an account? <a href="{% url 'accounts:login' %}">Login Here</a></p>
+    <style>
+    .downfooter {
+        position: inherit;
+    }
+    </style>
+    <div class="container-md" style="padding-left: 20%">
+    <div class="align-content-center">
+<div class="h1">
+    <p>Student Registration Form</p>
+</div>
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
@@ -15,50 +22,55 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <h3 style="text-align: center;color: red;">STUDENT SIGNUP</h3>
-        <form method="POST" autocomplete="off" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="username">Username</label>
-                    {{userForm.username}}
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    {{userForm.password}}
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="first_name">First Name</label>
-                    {{userForm.first_name}}
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="last_name">Last Name</label>
-                    {{userForm.last_name}}
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="last_name">College Name</label>
-                {{studentForm.college}}
-            </div>
-
-            <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="mobile">Email</label>
-            {{studentForm.email}}
-        </div>
-        <div class="form-group col-md-6">
-          <label for="address">Phone No</label>
-            {{studentForm.mobile}}
-        </div>
-      </div>
-
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+  <div class="form-group row ">
+    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-4">
+        {{ userForm.username }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword4" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+        {{userForm.password}}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="first_name" class="col-sm-2 col-form-label">firstName</label>
+    <div class="col-sm-10">
+        {{userForm.first_name}}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="last_name" class="col-sm-2 col-form-label">LastName</label>
+    <div class="col-sm-10">
+        {{userForm.last_name}}
+    </div>
+  </div>
+              <div class="form-group row">
+    <label for="college_name" class="col-sm-2 col-form-label">CollegeName</label>
+    <div class="col-sm-10">
+        {{studentForm.college}}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+        {{studentForm.email}}
+    </div>
+  </div>
+       <div class="form-group row">
+    <label for="mobile" class="col-sm-2 col-form-label">PhoneNo</label>
+    <div class="col-sm-10">
+        {{studentForm.mobile}}
+    </div>
+  </div>
 
     <button type="submit" class="btn btn-primary">Sign Up</button>
+        <p>Already have an account? <a href="{% url 'accounts:login' %}">Login Here</a></p>
   </form>
 </div>
     </div>
-</div>
 {% endblock %}
