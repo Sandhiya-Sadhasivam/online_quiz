@@ -117,3 +117,4 @@ dmypy.json
 .idea/vcs.xml
 *.idea/
 *.idea
+*.sqlite3
