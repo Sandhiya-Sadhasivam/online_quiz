@@ -30,7 +30,7 @@
 
         <td> {{t.course_name}}</td>
 
-        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:check-marks' t.id  %}"><i class="fa fa-arrow-circle-right" aria-hidden="true">  view   </i><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'quiz:check-score' t.id  %}"><i class="fa fa-arrow-circle-right" aria-hidden="true">  view   </i><span class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>
       {% endfor %}
     </table>

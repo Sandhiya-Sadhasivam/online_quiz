@@ -12,4 +12,6 @@ urlpatterns = [
     path('view-result', views.view_result_view, name='view-result'),
     path('check-marks/<int:pk>', views.check_marks_view, name='check-marks'),
     path('student-marks', views.student_marks_view, name='student-marks'),
+    path('view-leaderboard', views.view_leaderboard_view, name='view-leaderboard'),
+    path('check-score/<int:pk>', views.check_leaderboard_score_view, name='check-score'),
 ]
