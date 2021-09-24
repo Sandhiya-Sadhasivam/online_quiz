@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+  </style>
+
+<br><br>
+<div class="container">
+
+    <table class="table table-bordered table-hover table-dark" id="dev-table">
+      <thead class="text-center h2">
+      <th  colspan="2" class="h1" >LeaderBoard</th>
+        <tr>
+
+          <th>Name</th>
+
+          <th>Score</th>
+
+
+        </tr>
+      </thead>
+      {% for t in results %}
+      <tr class="text-center">
+
+        <td> {{t.student}}</td>
+        <td> {{t.marks}}</td>
+
+
+
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+    <br><br><br><br><br><br>
+{% endblock content %}

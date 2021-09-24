@@ -90,4 +90,4 @@ def check_leaderboard_score_view(request, pk):
     course = QMODEL.Course.objects.get(id=pk)
     student = models.Student.objects.get(user_id=request.user.id)
     results = QMODEL.Result.objects.all().filter(level=course).filter(student=student)
-    return render(request, 'quiz/mark.html', {'results': results})
+    return render(request, 'quiz/leaderboard.html', {'results': results})
