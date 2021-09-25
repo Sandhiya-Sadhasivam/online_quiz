@@ -18,24 +18,18 @@
 
     <table class="table table-bordered table-hover table-dark" id="dev-table">
       <thead class="text-center">
-      <th  colspan="2" class="h1" >View Score</th>
+      <th  colspan="3" class="h1" >View Score</th>
         <tr>
-
-          <th>Quiz Level</th>
-
-          <th>Total Score</th>
-
-
+            <th>Position</th>
+            <th>Name</th>
+            <th>Score</th>
         </tr>
       </thead>
-      {% for t in results %}
+      {% for Result in top_quiz_profiles %}
       <tr class="text-center">
-
-        <td> {{t.level}}</td>
-        <td> {{t.marks}}</td>
-
-
-
+          <td>{{ forloop.counter }}</td>
+          <td> {{Result.student}}</td>
+          <td> {{Result.marks}}</td>
       </tr>
       {% endfor %}
     </table>
