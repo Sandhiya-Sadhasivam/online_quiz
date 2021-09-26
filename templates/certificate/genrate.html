@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" >
+    <link rel="stylesheet" href="{% static 'css/vanilla-zoom.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/random.css' %}">
+{% endblock %}
+
+{% block content %}
+
+                 <form action="generate" method="post" enctype="multipart/form-data" id="formSubmit" class="formSubmit">
+  {% csrf_token %}
+
+
+<input type="file" id="file" name="file" hidden/>
+<label for="file" class="upload1" id="fileChange" style="transition:0.3s">Choose file
+
+</label>
+<input type="submit" id="submit-button"hidden/>
+<label for="submit-button" class="upload2">Submit</label>
+
+
+
+</form>
+
+{% endblock %}
+
+{% block Custom_js %}
+
+    <script>
+
+document.getElementById('file').addEventListener('change', function(){
+  document.getElementById('fileChange').textContent = this.files[0].name;
+  document.getElementById('fileChange').style.border = '3px solid green';
+})
+
+
+{% if not request.user.is_authenticated %}
+const form = document.getElementById('formSubmit');
+form.addEventListener('submit', (event) => {
+event.preventDefault();
+alert("you need to login to upload files")
+fileInput.value = '';
+
+});
+{% else %}
+const form = document.getElementById('formSubmit');
+let something;
+form.addEventListener('submit', (event) => {
+ var fileInput = document.getElementById('file');
+var filePath = fileInput.value;
+ var allowedExtensions = /(\.xlsx)$/i;
+filess = document.getElementById("file");
+const fileSize = filess.files[0];
+
+if (!allowedExtensions.exec(filePath)) {
+  event.preventDefault();
+alert('Invalid file type');
+fileInput.value = '';
+}
+else if (fileSize.size > 2097152) // 2 MiB for bytes = 2097152.
+{
+  alert("File size must under 2MiB!");
+  fileInput.value = '';
+  return;
+}else{
+  alert("file has been succesfully submitted");
+  form.submit();
+}
+
+
+});
+
+
+{% endif %}
+
+
+</script>
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'js/vanilla-zoom.js' %}"></script>
+    <script src="{% static 'js/bs-init.js' %}"></script>
+
+    {% endblock %}
+
+
+
+
+
