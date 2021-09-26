@@ -9,10 +9,15 @@
 		<div class="navbar-nav">
 			<a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
 			<a href="{% url 'quiz:quiz-list'  %}" class="nav-item nav-link">Quiz</a>
+            <a href="{% url 'quiz:view-leaderboard'  %}" class="nav-item nav-link">Leaderboard</a>
 		</div>
         <div class="navbar-nav ml-auto">
              {% if request.user.is_authenticated %}
+                  <div >
+                <li class="nav-item"><a class="nav-link active"  href="#">Hello &nbsp;&nbsp;{{user.username}}</a></li>
+            </div>
                 <div >
+
                  <a href="{% url 'accounts:logout' %}" class="btn btn-danger " style="margin-right: 40px;" >Logout</a>
             </div>
 
