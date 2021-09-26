@@ -143,10 +143,10 @@ def appreciation_generate(request):
             # Email
 
         os.remove('uploads/%s' % fileName)
-        return render(request, 'certificate/genrate.html')
+        return render(request, 'certificate/appreciation_genrate.html')
     else:
 
-        return render(request, 'certificate/genrate.html')
+        return render(request, 'certificate/appreciation_genrate.html')
 
 
 def appreciation_verify(request, slug):
@@ -159,7 +159,7 @@ def appreciation_verify(request, slug):
             context = {'info': slug, 'flag': True}
             found = True
             print("found the certificate")
-    return render(request, 'certificate/verify.html', context)
+    return render(request, 'certificate/appreciation_verify.html', context)
 
 
 

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" >
+    <link rel="stylesheet" href="{% static 'css/vanilla-zoom.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/random.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if flag %}
+<img  src="{% static 'certificates/'|add:info|add:'.jpg' %}"  width="800" height="500" class="certificate">
+
+
+{% else %}
+<img  src="{% static 'certificates/NotFound.jpg' %}"  width="800" height="500" class="certificate">
+{% endif %}
+
+{% endblock %}
+
+{% block Custom_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'js/vanilla-zoom.js' %}"></script>
+    <script src="{% static 'js/bs-init.js' %}"></script>
+{% endblock %}
+
+
+
+
+
