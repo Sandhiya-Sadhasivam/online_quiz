@@ -80,12 +80,10 @@ def student_marks_view(request):
     return render(request, 'quiz/student-mark.html', {'courses': courses})
 
 
-@login_required()
 def view_leaderboard_view(request):
     courses = QMODEL.Course.objects.all()
     return render(request, 'quiz/leaderboad-list.html', {'courses': courses})
 
-@login_required()
 def check_leaderboard_score_view(request, pk):
     course = QMODEL.Course.objects.get(id=pk)
     student = models.Student.objects.get(user_id=request.user.id)
