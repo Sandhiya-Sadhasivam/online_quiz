@@ -52,7 +52,7 @@ def generate(request):
             draw.text((1035, 900), org[i], font=fontTwo, fill="black")
             # draw.text((935, 80), mail[i], font=fontTwo , fill ="black")
 
-            image.save("static/certificates/winners/%s.jpg" % uniqueId)
+            image.save("static/certificates/%s.jpg" % uniqueId)
 
             # Email
 
@@ -61,7 +61,7 @@ def generate(request):
                 'Hi, this is your certificate for completing the course, you can verify this certificate using this unique ID: certify.com/verify/%s  ' % uniqueId,
                 'rajeshwaran1718@gmail.com',
                 [mail[i]])
-            email.attach_file('static/certificates/winners/%s.jpg' % uniqueId)
+            email.attach_file('static/certificates/%s.jpg' % uniqueId)
 
             email.send()
             # Email
@@ -76,7 +76,7 @@ def generate(request):
 def verify(request, slug):
     # found = False
     context = {'info': 'NotFound', 'flag': False}
-    for f in os.listdir('static/certificates/winners'):
+    for f in os.listdir('static/certificates'):
         fn, fext = os.path.splitext(f)
         print(fn)
         if fn == slug:
@@ -128,7 +128,7 @@ def appreciation_generate(request):
             draw.text((1035, 900), org[i], font=fontTwo, fill="black")
             # draw.text((935, 80), mail[i], font=fontTwo , fill ="black")
 
-            image.save("static/certificates/participant/%s.jpg" % uniqueId)
+            image.save("static/certificates/%s.jpg" % uniqueId)
 
             # Email
 
@@ -137,7 +137,7 @@ def appreciation_generate(request):
                 'Hi, this is your appreciation certificate, you can verify this certificate using this unique ID: certify.com/verify/%s  ' % uniqueId,
                 'rajeshwaran1718@gmail.com',
                 [mail[i]])
-            email.attach_file('static/certificates/participant/%s.jpg' % uniqueId)
+            email.attach_file('static/certificates/%s.jpg' % uniqueId)
 
             email.send()
             # Email
@@ -152,7 +152,7 @@ def appreciation_generate(request):
 def appreciation_verify(request, slug):
     # found = False
     context = {'info': 'NotFound', 'flag': False}
-    for f in os.listdir('static/certificates/participant'):
+    for f in os.listdir('static/certificates'):
         fn, fext = os.path.splitext(f)
         print(fn)
         if fn == slug:
