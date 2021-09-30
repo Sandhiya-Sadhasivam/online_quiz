@@ -1,45 +1,25 @@
 {% extends 'base.html' %}
+{% block title %}{{ course.course_name }} Score{% endblock %}
+
 {% block content %}
+    {% load static %}
 
+<div class="container ">
 
-  <style media="screen">
-    a:link {
-      text-decoration: none;
-    }
+    <div class="card-columns" style="padding: 10px; margin: 20px;">
+        <div class="card" align="centre " style="width: 32rem; border:5px black solid">
+            <img class="card-img-top" src="{% static 'img/result.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                 {% for t in results %}
+                <h5 class="card-title">Score: {{t.marks}}</h5>
 
-    h6 {
-      text-align: center;
-    }
+                {% endfor %}
+            <a class="btn btn-primary" href="{% url 'quiz:view-leaderboard' %}">Leaderboard</a>
+                <h5>All the best for next quiz!</h5>
+            </div>
+        </div>
+    </div>
 
-  </style>
+</div>
 
-<br><br>
-<div class="container">
-
-    <table class="table table-bordered table-hover table-dark" id="dev-table">
-      <thead class="text-center">
-      <th  colspan="2" class="h1" >View Score</th>
-        <tr>
-
-          <th>Quiz Level</th>
-
-          <th>Total Score</th>
-
-
-        </tr>
-      </thead>
-      {% for t in results %}
-      <tr class="text-center">
-
-        <td> {{t.student}}</td>
-        <td> {{t.marks}}</td>
-
-
-
-      </tr>
-      {% endfor %}
-    </table>
-  </div>
-
-    <br><br><br><br><br><br>
-{% endblock content %}
+{% endblock %}

@@ -62,7 +62,7 @@ def calculate_marks_view(request):
 
 @login_required()
 def view_result_view(request):
-    courses = QMODEL.Course.objects.all()
+    courses = QMODEL.Course.objects.all().filter(is_published= True)
     return render(request, 'quiz/result.html', {'courses': courses})
 
 
@@ -71,13 +71,7 @@ def check_marks_view(request, pk):
     course = QMODEL.Course.objects.get(id=pk)
     student = models.Student.objects.get(user_id=request.user.id)
     results = QMODEL.Result.objects.all().filter(level=course).filter(student=student)
-    return render(request, 'quiz/mark.html', {'results': results})
-
-
-@login_required()
-def student_marks_view(request):
-    courses = QMODEL.Course.objects.all()
-    return render(request, 'quiz/student-mark.html', {'courses': courses})
+    return render(request, 'quiz/mark.html', {'results': results, 'course': course})
 
 
 def view_leaderboard_view(request):
