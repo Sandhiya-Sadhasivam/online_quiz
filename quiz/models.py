@@ -10,6 +10,7 @@ class Course(models.Model):
     question_number = models.PositiveIntegerField()
     time = models.IntegerField(help_text="duration of the quiz in minutes")
     total_marks = models.PositiveIntegerField()
+    is_published = models.BooleanField(('Has been published?'), default=False, null=False)
 
     def __str__(self):
         return self.course_name
