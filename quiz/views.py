@@ -8,8 +8,8 @@ from quiz import models as QMODEL
 # Create your views here.
 @login_required()
 def student_exam_view(request):
-    courses = QMODEL.Course.objects.all()
-    return render(request, 'quiz/quiz_level.html', {'courses': courses})
+    courses = QMODEL.Course.objects.all().filter(is_published= True)
+    return render(request, 'quiz/quiz_level.html', {'courses': courses })
 
 
 @login_required()
@@ -81,7 +81,7 @@ def student_marks_view(request):
 
 
 def view_leaderboard_view(request):
-    courses = QMODEL.Course.objects.all()
+    courses = QMODEL.Course.objects.all().filter(is_published= True)
     return render(request, 'quiz/leaderboad-list.html', {'courses': courses})
 
 def check_leaderboard_score_view(request, pk):
