@@ -1,5 +1,5 @@
 # online_quiz
-### [onlinee-quiz.herokuapp.com]((https://onlinee-quiz.herokuapp.com/))
+### [onlinee-quiz.herokuapp.com](https://onlinee-quiz.herokuapp.com/)
 This is an online quiz organizing website project, developed using Python's web framework Django.<br>
 For front-end designing I have used Twitter's front-end library Bootstrap4.
 
