@@ -8,7 +8,8 @@ For front-end designing I have used Twitter's front-end library Bootstrap4.
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fonlinee-quiz.herokuapp.com%2F)](https://onlinee-quiz.herokuapp.com/)
 [![GitHub license](https://img.shields.io/github/license/Sandhiya-Sadhasivam/online_quiz)](https://github.com/Sandhiya-Sadhasivam/online_quiz/blob/main/LICENSE)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-
+![Django Version](https://img.shields.io/badge/Django-V3-brightgreen)
+![Python Version](https://img.shields.io/pypi/pyversions/Django)
 ## Current Features
 
 ### Site access features:
