@@ -24,5 +24,4 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('quiz/', include('quiz.urls')),
     path('accounts/', include('accounts.urls')),
-    path('certificate/',include('certificate.urls')),
 ]
