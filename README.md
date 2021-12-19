@@ -108,7 +108,7 @@ The room for development is enourmous. We can first start by adding a code edito
 
 The main reason behind choosing this project was that we can keep on working on it and improving it.
 
-## **Upcomeing Features of online_quiz:**
+##**Upcomeing Features of online_quiz:**
 
 * Timer for each quiz and the user is required to finish the quiz in given time.
 * When the timer stops, the corresponding record (i.e. number of correct answers) will be saved automatically.
