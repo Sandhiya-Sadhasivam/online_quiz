@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'online_quiz.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-'default': {
+    'default': {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
@@ -134,7 +134,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
 ]
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
