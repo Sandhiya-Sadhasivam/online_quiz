@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 from django.conf import settings
 from django.core.mail import send_mail
+import cloudinary
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +42,9 @@ INSTALLED_APPS = [
     'quiz.apps.QuizConfig',
     'accounts.apps.AccountsConfig',
     'certificate.apps.CertificateConfig',
+    # Media Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 
 ]
 
@@ -135,14 +140,20 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
 ]
 
+cloudinary.config(
+  cloud_name = "dvze2k2sf",
+  api_key = "434134182849588",
+  api_secret = "wRPorqwb40XVtWN-b27w2TfyIsA"
+)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'youremail@gmail.com'
-EMAIL_HOST_PASSWORD = 'your email password'
+EMAIL_HOST_USER = 'rajeshwaran1718@gmail.com'
+EMAIL_HOST_PASSWORD = '$m@rtBoy420'
 EMAIL_USE_TLS = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
