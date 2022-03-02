@@ -17,4 +17,4 @@ class Student(models.Model):
         return self
 
     def __str__(self):
-        return self.user.first_name
+        return self.user.first_name 
